@@ -270,7 +270,7 @@ ScrollTrigger.refresh()      // Refresh on resize
 - [x] Velocity-based text skewing
 - [x] Magnetic button interactions
 - [x] Horizontal scroll with mouse drag
-- [x] Cursor trail effects (desktop)
+- [x] Cursor trail effects (desktop-only, fixed visibility)
 - [x] Scroll-triggered animations
 - [x] Premium SVG icon system with contextual graphics
 - [x] View Case buttons with consistent alignment and hover effects
