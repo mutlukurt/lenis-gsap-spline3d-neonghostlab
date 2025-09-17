@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { ExternalLink, Play } from 'lucide-react'
+import { ExternalLink, Play, Palette, BarChart3, TrendingUp, Rocket, Sparkles } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,7 +10,7 @@ interface Case {
   title: string
   category: string
   description: string
-  image: string
+  icon: React.ReactNode
   link: string
   tech: string[]
 }
@@ -140,7 +140,7 @@ export default function Cases() {
       title: 'Ethereal Studios',
       category: 'Creative Agency',
       description: 'Interactive 3D hero with particle systems that respond to scroll velocity and mouse movement.',
-      image: 'https://images.pexels.com/photos/1161547/pexels-photo-1161547.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: <Palette size={48} className="text-[var(--accent)]" />,
       link: '#',
       tech: ['Spline', 'GSAP', 'Three.js']
     },
@@ -149,7 +149,7 @@ export default function Cases() {
       title: 'FlowState',
       category: 'SaaS Product',
       description: 'Smooth scroll-bound animations with data visualizations that animate in sequence.',
-      image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: <BarChart3 size={48} className="text-[var(--accent)]" />,
       link: '#',
       tech: ['Lenis', 'D3.js', 'React']
     },
@@ -158,7 +158,7 @@ export default function Cases() {
       title: 'Neon Ventures',
       category: 'Investment Firm',
       description: 'Sophisticated scroll-triggered reveals with magnetic cursor interactions.',
-      image: 'https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: <TrendingUp size={48} className="text-[var(--accent)]" />,
       link: '#',
       tech: ['GSAP', 'ScrollTrigger', 'CSS']
     },
@@ -167,7 +167,7 @@ export default function Cases() {
       title: 'Lunar Labs',
       category: 'Tech Startup',
       description: 'Performance-optimized animations with reduced motion support and mobile optimization.',
-      image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: <Rocket size={48} className="text-[var(--accent)]" />,
       link: '#',
       tech: ['Framer Motion', 'React', 'TypeScript']
     },
@@ -176,7 +176,7 @@ export default function Cases() {
       title: 'Pixel Perfect',
       category: 'Design Studio',
       description: 'Micro-interactions and hover states that enhance user experience without overwhelming.',
-      image: 'https://images.pexels.com/photos/1181233/pexels-photo-1181233.jpeg?auto=compress&cs=tinysrgb&w=800',
+      icon: <Sparkles size={48} className="text-[var(--accent)]" />,
       link: '#',
       tech: ['CSS Animations', 'GSAP', 'Vue.js']
     }
@@ -248,19 +248,18 @@ export default function Cases() {
                       </span>
                     ))}
                   </div>
-                  
-                  {/* Case link */}
-                  <a
-                    href={case_item.link}
-                    className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group/link"
-                  >
-                    <span>View Project</span>
-                    <ExternalLink 
-                      size={16} 
-                      className="group-hover/link:translate-x-0.5 transition-transform" 
-                    />
-                  </a>
+              {/* Case icon header */}
+              <div className="relative h-48 bg-gradient-to-br from-[var(--surface)] to-[var(--card)] flex items-center justify-center overflow-hidden">
+                <div className="group-hover:scale-110 transition-transform duration-500">
+                  {case_item.icon}
                 </div>
+                <div className="absolute top-4 right-4">
+                  <span className="bg-[var(--accent)] text-white text-xs px-3 py-1 rounded-full">
+                    {case_item.category}
+                  </span>
+                </div>
+                {/* Subtle pattern overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[var(--accent)]/5 to-[var(--accent)]/10" />
               </div>
             ))}
           </div>
