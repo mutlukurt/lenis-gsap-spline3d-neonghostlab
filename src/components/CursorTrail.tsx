@@ -13,16 +13,21 @@ export default function CursorTrail() {
       return
     }
 
-    const trailCount = 12
+    const trailCount = 8
     const trailDots: HTMLDivElement[] = []
 
     // Create trail dots
     for (let i = 0; i < trailCount; i++) {
       const dot = document.createElement('div')
-      dot.className = 'fixed pointer-events-none z-50 rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] opacity-0'
-      dot.style.width = `${8 - i * 0.4}px`
-      dot.style.height = `${8 - i * 0.4}px`
-      dot.style.mixBlendMode = 'screen'
+      dot.style.position = 'fixed'
+      dot.style.width = `${6 - i * 0.3}px`
+      dot.style.height = `${6 - i * 0.3}px`
+      dot.style.backgroundColor = '#7A3FFD'
+      dot.style.borderRadius = '50%'
+      dot.style.pointerEvents = 'none'
+      dot.style.zIndex = '9999'
+      dot.style.opacity = '0'
+      dot.style.transform = 'translate(-50%, -50%)'
       document.body.appendChild(dot)
       trailDots.push(dot)
       trailPos.current.push({ x: 0, y: 0 })
@@ -40,17 +45,15 @@ export default function CursorTrail() {
         const current = trailPos.current[i]
         const previous = trailPos.current[i - 1]
         
-        current.x += (previous.x - current.x) * 0.25
-        current.y += (previous.y - current.y) * 0.25
+        current.x += (previous.x - current.x) * 0.3
+        current.y += (previous.y - current.y) * 0.3
         
         const dot = trailDots[i]
         if (dot) {
-          gsap.set(dot, {
-            x: current.x - dot.offsetWidth / 2,
-            y: current.y - dot.offsetHeight / 2,
-            opacity: Math.max(0, 1 - i * 0.08),
-            scale: Math.max(0.2, 1 - i * 0.06)
-          })
+          dot.style.left = current.x + 'px'
+          dot.style.top = current.y + 'px'
+          dot.style.opacity = String(Math.max(0, 0.8 - i * 0.1))
+          dot.style.transform = `translate(-50%, -50%) scale(${Math.max(0.3, 1 - i * 0.1)})`
         }
       }
       
@@ -61,29 +64,22 @@ export default function CursorTrail() {
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current.x = e.clientX
       mousePos.current.y = e.clientY
-    }
-
-    // Show trail when mouse enters window
-    const handleMouseEnter = () => {
+      
+      // Show trail dots
       trailDots.forEach((dot, index) => {
-        gsap.to(dot, { 
-          opacity: Math.max(0, 1 - index * 0.08), 
-          duration: 0.3,
-          delay: index * 0.02
-        })
+        dot.style.opacity = String(Math.max(0, 0.8 - index * 0.1))
       })
     }
 
     // Hide trail when mouse leaves window
     const handleMouseLeave = () => {
       trailDots.forEach(dot => {
-        gsap.to(dot, { opacity: 0, duration: 0.3 })
+        dot.style.opacity = '0'
       })
     }
 
     // Add event listeners
     document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseenter', handleMouseEnter)
     document.addEventListener('mouseleave', handleMouseLeave)
     
     // Start animation loop
@@ -92,7 +88,6 @@ export default function CursorTrail() {
     // Cleanup
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseenter', handleMouseEnter)
       document.removeEventListener('mouseleave', handleMouseLeave)
       trailDots.forEach(dot => {
         if (document.body.contains(dot)) {
