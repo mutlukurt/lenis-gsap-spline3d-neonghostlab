@@ -227,7 +227,7 @@ export default function Cases() {
                 </div>
 
                 {/* Case content */}
-                <div className="p-6 flex flex-col h-full">
+                <div className="p-6 flex flex-col h-64">
                   <h3 className="text-2xl font-semibold text-[var(--text)] mb-3">
                     {case_item.title}
                   </h3>
@@ -249,7 +249,7 @@ export default function Cases() {
                   </div>
                   
                   {/* Action button */}
-                  <div className="flex items-center justify-between mt-auto">
+                  <div className="mt-auto">
                     <a
                       href={case_item.link}
                       className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group/link"
