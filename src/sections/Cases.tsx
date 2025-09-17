@@ -249,6 +249,16 @@ export default function Cases() {
                   </div>
                   
                   {/* Action button */}
+                  <div className="mt-auto">
+                    <a
+                      href={case_item.link}
+                      className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group/link"
+                    >
+                      <span className="text-sm font-medium">View Case</span>
+                      <ExternalLink size={16} className="group-hover/link:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
+                  {/* Action button */}
                   <div className="flex items-center justify-between mt-auto">
                     <a
                       href={case_item.link}
@@ -256,13 +266,8 @@ export default function Cases() {
                     >
                       <span className="text-sm font-medium">View Case</span>
                       <ExternalLink size={16} className="group-hover/link:translate-x-0.5 transition-transform" />
-                  <a
-                    href={case_item.link}
-                    className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group/link mt-auto"
-                  >
-                    <span className="text-sm font-medium">View Case</span>
-                    <ExternalLink size={16} className="group-hover/link:translate-x-0.5 transition-transform" />
-                  </a>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
