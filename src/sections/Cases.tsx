@@ -212,19 +212,18 @@ export default function Cases() {
                 ref={(el) => addCardRef(el, index)}
                 className="flex-shrink-0 w-80 md:w-96 scroll-snap-center bg-[var(--card)] border border-[var(--surface)] rounded-2xl overflow-hidden hover:border-[var(--accent)]/40 transition-all duration-300 group"
               >
-                {/* Case image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={case_item.image}
-                    alt={case_item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--card)]/80 to-transparent" />
+                {/* Case icon header */}
+                <div className="relative h-48 bg-gradient-to-br from-[var(--surface)] to-[var(--card)] flex items-center justify-center overflow-hidden">
+                  <div className="group-hover:scale-110 transition-transform duration-500">
+                    {case_item.icon}
+                  </div>
                   <div className="absolute bottom-4 left-4">
                     <span className="bg-[var(--accent)] text-white text-xs px-3 py-1 rounded-full">
                       {case_item.category}
                     </span>
                   </div>
+                  {/* Subtle pattern overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[var(--accent)]/5 to-[var(--accent)]/10" />
                 </div>
 
                 {/* Case content */}
@@ -248,19 +247,16 @@ export default function Cases() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Case icon header */}
-                  <div className="relative h-48 bg-gradient-to-br from-[var(--surface)] to-[var(--card)] flex items-center justify-center overflow-hidden">
-                    <div className="group-hover:scale-110 transition-transform duration-500">
-                      {case_item.icon}
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-[var(--accent)] text-white text-xs px-3 py-1 rounded-full">
-                        {case_item.category}
-                      </span>
-                    </div>
-                    {/* Subtle pattern overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[var(--accent)]/5 to-[var(--accent)]/10" />
+                  
+                  {/* Action button */}
+                  <div className="flex items-center justify-between">
+                    <a
+                      href={case_item.link}
+                      className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group/link"
+                    >
+                      <span className="text-sm font-medium">View Case</span>
+                      <ExternalLink size={16} className="group-hover/link:translate-x-0.5 transition-transform" />
+                    </a>
                   </div>
                 </div>
               </div>
