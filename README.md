@@ -52,6 +52,7 @@ A production-ready single-page application showcasing AI-native motion systems w
 - **Card Animations**: Center-focused scaling, opacity, and rotation effects
 - **Touch Support**: Mobile-optimized swipe gestures
 - **Interactive Elements**: Hover animations and magnetic button interactions
+- **View Case Buttons**: Aligned action buttons for each case study with external link icons
 
 #### Process Section
 - **Clean Card Layout**: Single-column responsive design
@@ -272,6 +273,7 @@ ScrollTrigger.refresh()      // Refresh on resize
 - [x] Cursor trail effects (desktop)
 - [x] Scroll-triggered animations
 - [x] Premium SVG icon system with contextual graphics
+- [x] View Case buttons with consistent alignment and hover effects
 
 ### ✅ Performance & Accessibility
 - [x] Transform-only animations
