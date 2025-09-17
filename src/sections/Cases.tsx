@@ -248,17 +248,22 @@ export default function Cases() {
                       </span>
                     ))}
                   </div>
-                    
-                    {/* Action button */}
-                    <a
-                      href={case_item.link}
-                      className="inline-flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-2)] transition-colors group"
-                    >
-                      <span>View Case</span>
-                      <ExternalLink size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                    </a>
+
+                  {/* Case icon header */}
+                  <div className="relative h-48 bg-gradient-to-br from-[var(--surface)] to-[var(--card)] flex items-center justify-center overflow-hidden">
+                    <div className="group-hover:scale-110 transition-transform duration-500">
+                      {case_item.icon}
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-[var(--accent)] text-white text-xs px-3 py-1 rounded-full">
+                        {case_item.category}
+                      </span>
+                    </div>
+                    {/* Subtle pattern overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[var(--accent)]/5 to-[var(--accent)]/10" />
                   </div>
                 </div>
+              </div>
             ))}
           </div>
 
