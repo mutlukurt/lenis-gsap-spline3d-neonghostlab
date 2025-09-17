@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import HeroSpline from './components/HeroSpline'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import CursorTrail from './components/CursorTrail'
 import Intro from './sections/Intro'
 import Capabilities from './sections/Capabilities'
 import Cases from './sections/Cases'
@@ -25,6 +26,7 @@ function App() {
         Skip to main content
       </a>
       
+      <CursorTrail />
       <Nav />
       
       <main id="main" className="relative">
