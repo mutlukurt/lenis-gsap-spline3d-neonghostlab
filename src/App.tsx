@@ -3,7 +3,6 @@ import { Suspense, lazy } from 'react'
 import './lib/lenis'
 
 // Lazy load all components for better performance
-const HeroSpline = lazy(() => import('./components/HeroSpline'))
 const Nav = lazy(() => import('./components/Nav'))
 const Footer = lazy(() => import('./components/Footer'))
 const CursorTrail = lazy(() => import('./components/CursorTrail'))
@@ -14,6 +13,8 @@ const Process = lazy(() => import('./sections/Process'))
 const Playground = lazy(() => import('./sections/Playground'))
 const Contact = lazy(() => import('./sections/Contact'))
 
+// Import HeroSpline directly (no lazy loading)
+import HeroSpline from './components/HeroSpline'
 // Loading fallback component
 const LoadingFallback = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center justify-center ${className}`}>
@@ -45,9 +46,7 @@ function App() {
       </Suspense>
       
       <main id="main" className="relative">
-        <Suspense fallback={<LoadingFallback className="h-screen" />}>
-          <HeroSpline />
-        </Suspense>
+        <HeroSpline />
         
         <Suspense fallback={<LoadingFallback className="py-32" />}>
           <Intro />
