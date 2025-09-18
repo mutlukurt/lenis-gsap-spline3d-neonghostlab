@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react'
 import './lib/lenis'
 
 // Lazy load all components for better performance
-const Nav = lazy(() => import('./components/Nav'))
+import Nav from './components/Nav'
 const Footer = lazy(() => import('./components/Footer'))
 const CursorTrail = lazy(() => import('./components/CursorTrail'))
 const Intro = lazy(() => import('./sections/Intro'))
@@ -41,9 +41,7 @@ function App() {
         <CursorTrail />
       </Suspense>
       
-      <Suspense fallback={<LoadingFallback className="fixed top-4 right-4 z-50" />}>
-        <Nav />
-      </Suspense>
+      <Nav />
       
       <main id="main" className="relative">
         <HeroSpline />
