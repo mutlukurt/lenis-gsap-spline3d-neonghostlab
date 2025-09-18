@@ -81,7 +81,6 @@ A production-ready single-page application showcasing AI-native motion systems w
 - **Aggressive Spline Preload**: HTML preload, DNS prefetch, and forced visibility for instant 3D scene
 - **High Priority Fetch**: Spline scene marked as high priority resource
 - **CSS Override System**: Force immediate canvas visibility with !important declarations
-
 ### ♿ Accessibility Features
 - **WCAG AA Compliance**: High contrast ratios throughout
 - **Keyboard Navigation**: Full keyboard accessibility
