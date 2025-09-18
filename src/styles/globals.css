@@ -122,6 +122,25 @@ a:focus-visible {
   transform-origin: center center;
 }
 
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Lazy loading optimization */
+.lazy-section {
+  contain: layout style paint;
+}
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 6px;

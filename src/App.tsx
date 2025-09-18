@@ -1,15 +1,25 @@
 import React, { useEffect } from 'react'
-import HeroSpline from './components/HeroSpline'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import CursorTrail from './components/CursorTrail'
-import Intro from './sections/Intro'
-import Capabilities from './sections/Capabilities'
-import Cases from './sections/Cases'
-import Process from './sections/Process'
-import Playground from './sections/Playground'
-import Contact from './sections/Contact'
+import { Suspense, lazy } from 'react'
 import './lib/lenis'
+
+// Lazy load all components for better performance
+const HeroSpline = lazy(() => import('./components/HeroSpline'))
+const Nav = lazy(() => import('./components/Nav'))
+const Footer = lazy(() => import('./components/Footer'))
+const CursorTrail = lazy(() => import('./components/CursorTrail'))
+const Intro = lazy(() => import('./sections/Intro'))
+const Capabilities = lazy(() => import('./sections/Capabilities'))
+const Cases = lazy(() => import('./sections/Cases'))
+const Process = lazy(() => import('./sections/Process'))
+const Playground = lazy(() => import('./sections/Playground'))
+const Contact = lazy(() => import('./sections/Contact'))
+
+// Loading fallback component
+const LoadingFallback = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center justify-center ${className}`}>
+    <div className="w-8 h-8 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
+  </div>
+)
 
 function App() {
   useEffect(() => {
@@ -26,20 +36,47 @@ function App() {
         Skip to main content
       </a>
       
-      <CursorTrail />
-      <Nav />
+      <Suspense fallback={null}>
+        <CursorTrail />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingFallback className="fixed top-4 right-4 z-50" />}>
+        <Nav />
+      </Suspense>
       
       <main id="main" className="relative">
-        <HeroSpline />
-        <Intro />
-        <Capabilities />
-        <Cases />
-        <Process />
-        <Playground />
-        <Contact />
+        <Suspense fallback={<LoadingFallback className="h-screen" />}>
+          <HeroSpline />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Intro />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Capabilities />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Cases />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Process />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Playground />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback className="py-32" />}>
+          <Contact />
+        </Suspense>
       </main>
       
-      <Footer />
+      <Suspense fallback={<LoadingFallback className="py-16" />}>
+        <Footer />
+      </Suspense>
     </div>
   )
 }

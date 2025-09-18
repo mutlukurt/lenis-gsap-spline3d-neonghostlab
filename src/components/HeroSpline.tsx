@@ -1,15 +1,27 @@
-import { Suspense } from 'react'
+import { Suspense, lazy } from 'react'
 import Spline from '@splinetool/react-spline'
+
+// Lazy load Spline for better initial performance
+const LazySpline = lazy(() => import('@splinetool/react-spline'))
 
 export default function HeroSpline() {
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Spline 3D Scene */}
       <div className="absolute inset-0 z-0">
-        <Spline 
-          scene="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode"
-          style={{ width: '100%', height: '100%' }}
-        />
+        <Suspense fallback={
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--surface)] to-[var(--card)]">
+            <div className="text-center">
+              <div className="w-12 h-12 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-[var(--muted)] text-sm">Loading 3D Scene...</p>
+            </div>
+          </div>
+        }>
+          <LazySpline 
+            scene="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </Suspense>
       </div>
 
       {/* Radial gradient overlay */}
