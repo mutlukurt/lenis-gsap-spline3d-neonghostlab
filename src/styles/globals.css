@@ -121,12 +121,16 @@ a:focus-visible {
 canvas {
   opacity: 1 !important;
   visibility: visible !important;
+  display: block !important;
+  transform: none !important;
 }
 
 /* Prevent any loading delays */
 .spline-container {
   background: var(--bg);
   min-height: 100vh;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Velocity-based skewing for demo text */

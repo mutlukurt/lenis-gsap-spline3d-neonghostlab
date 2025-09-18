@@ -5,33 +5,36 @@ export default function HeroSpline() {
   const splineRef = useRef<any>(null)
 
   useEffect(() => {
-    // Preload the Spline scene immediately
-    const link = document.createElement('link')
-    link.rel = 'preload'
-    link.href = 'https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode'
-    link.as = 'fetch'
-    link.crossOrigin = 'anonymous'
-    document.head.appendChild(link)
-
-    return () => {
-      if (document.head.contains(link)) {
-        document.head.removeChild(link)
-      }
+    // Force immediate visibility
+    const canvas = document.querySelector('canvas')
+    if (canvas) {
+      canvas.style.opacity = '1'
+      canvas.style.visibility = 'visible'
+      canvas.style.display = 'block'
     }
   }, [])
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* Spline 3D Scene - Direct loading without fallback */}
+      {/* Spline 3D Scene - Immediate render with forced visibility */}
       <div className="absolute inset-0 z-0">
         <Spline 
           ref={splineRef}
           scene="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode"
-          style={{ width: '100%', height: '100%' }}
+          style={{ 
+            width: '100%', 
+            height: '100%',
+            opacity: '1',
+            visibility: 'visible',
+            display: 'block'
+          }}
           onLoad={() => {
-            // Scene loaded, ensure it's visible immediately
-            if (splineRef.current) {
-              splineRef.current.style.opacity = '1'
+            // Ensure immediate visibility on load
+            const canvas = document.querySelector('canvas')
+            if (canvas) {
+              canvas.style.opacity = '1'
+              canvas.style.visibility = 'visible'
+              canvas.style.display = 'block'
             }
           }}
         />

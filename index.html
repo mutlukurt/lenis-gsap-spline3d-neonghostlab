@@ -5,8 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Preload critical Spline scene -->
-    <link rel="preload" href="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode" as="fetch" crossorigin="anonymous" fetchpriority="high">
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin>
     <link rel="dns-prefetch" href="https://prod.spline.design">
+    <!-- Force immediate Spline visibility -->
+    <style>
+      canvas {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+      }
+      .spline-container {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
     <title>NeonGhost Lab - Production React + TypeScript SPA with Spline + Lenis + GSAP</title>
   </head>
   <body>
