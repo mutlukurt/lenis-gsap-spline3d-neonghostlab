@@ -117,6 +117,18 @@ a:focus-visible {
   transform-origin: center center;
 }
 
+/* Immediate Spline visibility */
+canvas {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Prevent any loading delays */
+.spline-container {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
 /* Velocity-based skewing for demo text */
 .demo-text {
   transform-origin: center center;

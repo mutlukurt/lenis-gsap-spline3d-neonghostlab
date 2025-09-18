@@ -1,13 +1,39 @@
 import Spline from '@splinetool/react-spline'
+import { useEffect, useRef } from 'react'
 
 export default function HeroSpline() {
+  const splineRef = useRef<any>(null)
+
+  useEffect(() => {
+    // Preload the Spline scene immediately
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.href = 'https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode'
+    link.as = 'fetch'
+    link.crossOrigin = 'anonymous'
+    document.head.appendChild(link)
+
+    return () => {
+      if (document.head.contains(link)) {
+        document.head.removeChild(link)
+      }
+    }
+  }, [])
+
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Spline 3D Scene - Direct loading without fallback */}
       <div className="absolute inset-0 z-0">
         <Spline 
+          ref={splineRef}
           scene="https://prod.spline.design/ObdplrnhvfU4hogz/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
+          onLoad={() => {
+            // Scene loaded, ensure it's visible immediately
+            if (splineRef.current) {
+              splineRef.current.style.opacity = '1'
+            }
+          }}
         />
       </div>
 
