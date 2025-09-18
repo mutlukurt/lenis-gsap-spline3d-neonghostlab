@@ -17,8 +17,10 @@ A production-ready single-page application showcasing AI-native motion systems w
 - **Spline Integration**: Custom 3D mascot scene with NeonGhost character
 - **Scroll Reactions**: Subtle fade and scale effects on initial scroll
 - **Radial Gradient Overlay**: Dynamic purple glow effect behind 3D scene
-- **Performance Optimized**: Lazy loading with fallback states
+- **Zero-Delay Loading**: Instant visibility with aggressive preloading and CSS overrides
 - **Accessibility**: Proper ARIA labels and screen reader support
+- **High Priority Fetch**: Scene marked as critical resource with fetchpriority="high"
+- **DNS Prefetch**: Spline domain pre-resolved for instant connection
 
 ### 🌊 Smooth Scrolling System
 - **Lenis Integration**: Buttery smooth scrolling with custom easing curves
@@ -73,9 +75,12 @@ A production-ready single-page application showcasing AI-native motion systems w
 - **Mobile-Safe Parallax**: Reduced effects on touch devices
 - **Lazy Loading**: Spline scene and images load on demand
 - **Bundle Optimization**: Tree-shaking and code splitting
-- **Instant Hero Loading**: Spline 3D scene loads immediately without loading states
+- **Instant Hero Loading**: Spline 3D scene loads immediately with zero delay
 - **Direct Navigation**: Navbar renders instantly on page load
 - **Zero Loading Spinners**: Eliminated purple loading indicators for critical components
+- **Aggressive Spline Preload**: HTML preload, DNS prefetch, and forced visibility for instant 3D scene
+- **High Priority Fetch**: Spline scene marked as high priority resource
+- **CSS Override System**: Force immediate canvas visibility with !important declarations
 
 ### ♿ Accessibility Features
 - **WCAG AA Compliance**: High contrast ratios throughout
@@ -284,8 +289,10 @@ ScrollTrigger.refresh()      // Refresh on resize
 - [x] WCAG AA compliance
 - [x] Mobile optimization
 - [x] Proper cleanup and memory management
-- [x] Instant hero and navigation loading
+- [x] Zero-delay hero and navigation loading
 - [x] Zero loading states for critical UI components
+- [x] Aggressive Spline preloading with forced visibility
+- [x] High-priority resource fetching for 3D scenes
 
 ### ✅ User Experience
 - [x] Smart navigation with hide/show
