@@ -73,7 +73,6 @@ A production-ready single-page application showcasing AI-native motion systems w
 - **Will-Change Management**: Strategic use for animated elements only
 - **Proper Cleanup**: ScrollTrigger and event listener cleanup
 - **Mobile-Safe Parallax**: Reduced effects on touch devices
-- **Lazy Loading**: Spline scene and images load on demand
 - **Bundle Optimization**: Tree-shaking and code splitting
 - **Instant Hero Loading**: Spline 3D scene loads immediately with zero delay
 - **Direct Navigation**: Navbar renders instantly on page load
